@@ -1,11 +1,13 @@
 /***************************************
- * HOMEWORK:    <Assignment Number>
+ * HOMEWORK:    Assignment 1
  * 
  * NAME:        Clayton Easley
  * 
- * DATE:        <2025-05-22>
+ * CLASS:       C Programming, Summer 2025
  * 
- * DESCRIPTION: <description>
+ * DATE:        <2025-05-27>
+ * 
+ * DESCRIPTION: 
  ****************************************/
 
 #include <stdio.h>

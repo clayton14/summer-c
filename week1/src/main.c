@@ -3,6 +3,8 @@
  * 
  * NAME:        Clayton Easley
  * 
+ * CLASS:       C Programming, Summer 2025
+ *  
  * DATE:        <YYYY-MM-DD>
  * 
  * DESCRIPTION: <description>
