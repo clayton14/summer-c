@@ -7,37 +7,62 @@
  * 
  * DATE:        <2025-05-27>
  * 
- * DESCRIPTION: 
+ * DESCRIPTION:  Program which determines gross pay and outputs to the screen and writes to file
  ****************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
-
 //FILE *output_ptr; // pointer to output file
 
 int main()
 {
-
     int clockNumber; // employee clock number 
     float gross;     // gross pay for week (wage * hours) 
     float hours;     // number of hours worked per week 
     float wageRate;  // hourly wage 
 
-
-    printf("\n***** Pay Caculator *****\n");
-    printf("\nEnter Your Employee ID:\n");
-    scanf("%06d", &clockNumber);
-    if(clockNumber < 0)
+    FILE *output;   //pointer to the output file
+    
+    //taken from example
+    if((output = fopen("home.txt", "a")) == (FILE *) NULL) // why cast type to NULL pointer ?
     {
-        printf("[ERROR] your Employee ID cannot be negative");
-        return 0;
+        fprintf(stderr, "[ERROR] Unable to open file home.txt\n");
+        return -1;
     }
-    printf("%06d", clockNumber);
-    printf("\nEnter hours worked:\n");
+
+    fprintf(output, "\n***** Pay Caculator *****\n");
+    printf("\n***** Pay Caculator *****\n");
+    printf("\nEnter Your Employee ID: ");
+    scanf("%d", &clockNumber);
+
+    printf("\nEnter hourly wage: ");
+    scanf("%f", &wageRate);
+    
+    printf("\nEnter hours worked: ");
     scanf("%f", &hours);
-    printf("%2.2f\n", hours);    
+
+    if ((clockNumber < 0) || (wageRate < 0) || (hours < 0))
+    {
+        printf("[ERROR] value cannot be negative\n");
+        return -1; // return -1 if an error occurs
+    }
+
+    // calculate gross pay
+    gross = wageRate * hours;
+
+    //print to screen
+    printf("\n---------------------------------------------\n");
+    printf("Clock#\tWage\tHours\t\tGross");
+    printf("\n---------------------------------------------\n");
+    printf("%06d\t%2.2f\t%2.2f\t\t%2.2f\n", clockNumber,  wageRate, hours, gross);
+    
+    //write to file
+    fprintf(output,"\n---------------------------------------------\n");
+    fprintf(output,"Clock#\tWage\tHours\t\tGross");
+    fprintf(output,"\n---------------------------------------------\n");
+    fprintf(output,"%06d\t%2.2f\t%2.2f\t\t%2.2f\n", clockNumber,  wageRate, hours, gross);
+    
+    fclose(output); // close the file    
     return 0;
 } // main
 
