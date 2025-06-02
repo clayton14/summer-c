@@ -42,6 +42,12 @@ int main()
     printf("\nHow many entries are you entering: ");
     scanf("%d", &numEmployees);
 
+    if(numEmployees < 0)
+    {
+        printf("[ERROR] value cannot be negative\n");
+        return -1; // return -1 if an error occurs
+    }
+
     // start looping
     for (size_t i = 0; i < numEmployees; i++)
     {
@@ -57,8 +63,8 @@ int main()
 
         if ((clockNumber < 0) || (wageRate < 0) || (hours < 0) || (numEmployees < 0))
         {
-            printf("[ERROR] value cannot be negative\n");
-            return -1; // return -1 if an error occurs
+            printf("[ERROR] value cannot be negative entry terminated\n");
+            continue; // continue program although error has occured.
         }
 
         // calculate gross pay
