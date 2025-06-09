@@ -1,28 +1,34 @@
 /***************************************
- * HOMEWORK:    Assignment 2
+ * HOMEWORK:    Assignment 3
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        <2025-06-02>
+ * DATE:        <2025-06-09>
  *
- * DESCRIPTION:  Program which determines gross pay and outputs to the screen
- * and writes to file. Allows for multiple entries.
+ * DESCRIPTION:  Program which determines employee gross pay and outputs to the screen
+ * and writes to file. 
+ * Allows for multiple entries and caulates overtime pay.
  ****************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#define STD_HOURS 40.0   // Standard weekely hours before overtime.
+#define LOT_SIZE 5       // Default number of employee to enter into the system.
+
+
 int main()
 {
-    int clockNumber; // employee clock number
+    int clockNumber;    // employee clock number
     int numEmployees;
-    float gross;    // gross pay for week (wage * hours)
-    float hours;    // number of hours worked per week
-    float wageRate; // hourly wage
+    float gross;        // gross pay for week (wage * hours)
+    float hours;        // number of hours worked per week
+    float ot_hours;      // number of overtime hours worked 
+    float wageRate;     // hourly wage
 
-    FILE *output; // pointer to the output file
+    FILE *output;       // pointer to the output file
 
     // taken from example
     // Open file in append mode
@@ -33,14 +39,14 @@ int main()
     }
 
     fprintf(output, "\n***** Pay Caculator *****\n");
-
+    printf("Default lot size: %d", LOT_SIZE);
     //add headder to home.txt
     fprintf(output, "Clock#\tWage\tHours\t\tGross");
     fprintf(output, "\n---------------------------------------------\n");
     
-    
-    printf("\nHow many entries are you entering: ");
-    scanf("%d", &numEmployees);
+    // Assignemnt 3 asks for #define SIZE 5
+    // printf("\nHow many entries are you entering: ");
+    // scanf("%d", &numEmployees);
 
     if(numEmployees < 0)
     {
@@ -49,7 +55,7 @@ int main()
     }
 
     // start looping
-    for (size_t i = 0; i < numEmployees; i++)
+    for (size_t i = 0; i < LOT_SIZE; i++)
     {
         printf("\n***** Pay Caculator *****\n");
         printf("\nEnter Your Employee ID: ");
@@ -57,7 +63,7 @@ int main()
 
         printf("\nEnter hourly wage: ");
         scanf("%f", &wageRate);
-
+        
         printf("\nEnter hours worked: ");
         scanf("%f", &hours);
 
