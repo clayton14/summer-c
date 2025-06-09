@@ -67,6 +67,15 @@ int main()
         printf("\nEnter hours worked: ");
         scanf("%f", &hours);
 
+        // determine if employee worked overtime and cacualte overtime hours.
+        if (wageRate > STD_HOURS)
+        {
+            ot_hours = wageRate - STD_HOURS; 
+        } else if (wageRate < STD_HOURS)
+        {
+            ot_hours = 0;
+        }
+
         if ((clockNumber < 0) || (wageRate < 0) || (hours < 0) || (numEmployees < 0))
         {
             printf("[ERROR] value cannot be negative entry terminated\n");
