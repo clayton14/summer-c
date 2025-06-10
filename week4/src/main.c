@@ -20,18 +20,18 @@
 
 int main()
 {
-    int clock_number; // employee clock number
+    int clock_number;       // employee clock number
     int num_employees;
-    float gross;    // gross pay for week (wage * hours)
-    float hours;    // number of hours worked per week
+    float gross;          // gross pay for week (wage * hours)
+    float hours;          // number of hours worked per week
     float overtime_hours; // number of overtime hours worked
-    float wageRate; // hourly wage
+    float wageRate;       // hourly wage
 
     FILE *output; // pointer to the output file
 
     // taken from example
     // Open file in append mode
-    if ((output = fopen("home.txt", "a")) == (FILE *) NULL) // why cast type to NULL pointer ?
+    if ((output = fopen("home.txt", "a")) == (FILE *)NULL) // why cast type to NULL pointer ?
     {
         fprintf(stderr, "[ERROR] Unable to open file home.txt\n");
         return -1;
@@ -40,7 +40,7 @@ int main()
     fprintf(output, "\n***** Pay Caculator *****\n");
     // add headder to home.txt
     fprintf(output, "Clock#\tWage\tHours\tOT Pay\t\tGross");
-    fprintf(output, "\n---------------------------------------------\n");
+    fprintf(output, "\n---------------------------------------------------------------\n");
 
     printf("\nHow many entries are you entering: ");
     scanf("%d", &num_employees);
@@ -80,19 +80,19 @@ int main()
         // calculate gross pay with overtime
         float overtime_pay = ((wageRate * 1.5) * overtime_hours);
         gross = (wageRate * (hours - overtime_hours)) + overtime_pay;
-        
-        
+
         // print to screen
-        printf("\n---------------------------------------------\n");
-        printf("Clock#\tWage\tHours\tOT Pay\t\tGross");
-        printf("\n---------------------------------------------\n");
-        printf("%06d\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n", clock_number, wageRate, hours, overtime_pay, gross);
+        printf("\n---------------------------------------------------------------\n");
+        printf("Clock#\tWage\tHours\tOT Hours\tOT Pay\t\tGross");
+        printf("\n---------------------------------------------------------------\n");
+        printf("%06d\t%2.2f\t%2.2f\t%2.2f\t\t+%2.2f\t\t%2.2f\n", 
+            clock_number, wageRate, hours, overtime_hours, overtime_pay, gross);
 
         // write to file
-        fprintf(output, "%06d\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n", clock_number, wageRate, hours, overtime_pay, gross);
+        fprintf(output, "%06d\t%2.2f\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n", 
+            clock_number, wageRate, hours, overtime_hours, overtime_pay, gross);
 
-        overtime_hours = 0; //reset for next entry
-
+        overtime_hours = 0; // reset for next entry
     } // end for
     // close the file
     fclose(output);
