@@ -1,11 +1,11 @@
 /***************************************
- * HOMEWORK:    Assignment 4
+ * HOMEWORK:    Assignment 5
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        <2025-06-17>
+ * DATE:        <2025-06-24>
  *
  * DESCRIPTION:  Program which determines employee gross pay and outputs to the screen
  * and writes to file.
@@ -15,20 +15,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define STD_HOURS 40.0 // Standard weekely hours before overtime.
-#define LOT_SIZE 5     // Default number of employee to enter into the system.
-#define STD_OVERTIME 1.5
+#include "employee.h"
+
+
+
 
 int main()
 {
-    // employee clock number
-    int clock_number[LOT_SIZE] = {98401, 526488, 765349, 34645, 127615};
-    // hourly wage
-    float wageRate[LOT_SIZE] = {10.6, 9.75, 10.5, 12.25, 8.35};
-    float hours[LOT_SIZE];                    // number of hours worked per week
-    float overtime_hours[LOT_SIZE]; // number of overtime hours worked
-    float overtime_pay[LOT_SIZE];   // amount of overtim pay in dollars
-    float gross[LOT_SIZE];                    // gross pay for week (wage * hours)
+    
 
     float avg_data[5] = {0}; // array to store avrage of each metric
 
@@ -86,9 +80,7 @@ int main()
     } // end for
     
     // Print header
-    printf("\n---------------------------------------------------------------\n");
-    printf("Clock#\tWage\tHours\tOT Hours\tOT Pay\t\tGross");
-    printf("\n---------------------------------------------------------------\n");
+
 
     // loop
     for (size_t i = 0; i < LOT_SIZE; i++)
