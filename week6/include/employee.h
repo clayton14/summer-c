@@ -11,24 +11,55 @@
  * 
  ****************************************/
 
+#include <stdbool.h>
+#include <time.h>
+
 
 #define STD_HOURS 40.0      // Standard weekely hours before overtime.
 #define LOT_SIZE 5          // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5    // Standatd time and a half pay
 
-
-float caculate_pay();
-
-
-void write_to_file();
+/**
+ * Function: is_overtime()
+ * ---------------------------
+ *  helper function that determines if the amount of time worked is over 
+ *  STD_HOURS
+ *  @return true if the number of hours is is over STD_HOURS
+ **/
+bool is_overtime(int hours_worked);
 
 
 /**
- * Function: display_output()
+ * Function: caculate_pay()
  * ---------------------------
- *  Displays table of employee data to stdout
- *  @param num_entries the number of entries to display to stdout
- **/ 
-void display_output(int num_entries);
+ * @param hours the numer of hours the employee worked
+ * @param wage_rate the hourly wage of the employee
+ * 
+ * @returns the total gorss pay the emplyee earns with overtime
+ * 
+ **/
+float caculate_pay(float hours, float wage_rate);
 
-int get_utc_time();
+
+/**
+ * Function: log_row()
+ * ---------------------------
+ *  Wites current row into desired output file 
+ *  TODO: add row array
+ *  @param clock_number employee clock number
+ *  @param row pointer to the row of data that containes employee data
+ **/
+void log_row(char *filename, int clock_number, float *row);
+
+
+/**
+ * Function: display_row()
+ * ---------------------------
+ *  Wites the current employees data stdout 
+ *  @param clock_number employee clock number
+ *  @param row pointer to the row of data that containes the employee data
+ **/
+void display_row(int clock_number, float *row);
+
+
+

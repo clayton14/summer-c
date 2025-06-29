@@ -13,29 +13,62 @@
  ****************************************/
 
 
-#include "employee.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
-
-// employee clock number
-int clock_number[LOT_SIZE] = {98401, 526488, 765349, 34645, 127615};
-// hourly wage
-float wageRate[LOT_SIZE] = {10.6, 9.75, 10.5, 12.25, 8.35};
-float hours[LOT_SIZE];                    // number of hours worked per week
-float overtime_hours[LOT_SIZE]; // number of overtime hours worked
-float overtime_pay[LOT_SIZE];   // amount of overtim pay in dollars
-float gross[LOT_SIZE];                    // gross pay for week (wage * hours)
+#include "employee.h"
 
 
-float caculate_pay()
+bool is_overtime(int hours_worked)
 {
-    return 0.0;
+    if (STD_HOURS < hours_worked)
+    {
+        return true; 
+    }
+    else
+    {
+        return false;
+    }
+     
 }
 
-void write_to_file()
+float caculate_pay(float hours, float wage_rate)
 {
+    float gross;
+    if(is_overtime(hours))
+    {
+        float overtime_hours = hours - STD_HOURS;
+        float overtime_pay = ((wage_rate * STD_OVERTIME) * overtime_hours);
+        gross = (wage_rate * (hours - overtime_hours)) + overtime_pay;
+
+    }
+    else
+    {
+        gross = wage_rate * hours;
+    }
+    
+    return gross;
+}
+
+
+
+void log_row(char *filename, int clock_number, float *row)
+{
+
+    //int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross
+    // pointer to the output file
+    FILE *output;
+    // Open file in append mode
+    if ((output = fopen(filename, "a")) == (FILE *)NULL) 
+    {
+        fprintf(stderr, "[ERROR] Unable to open file employee.log\n");
+        return -1;
+    }
+    // write to file
+    fprintf(output, "%06d\t%2.2f\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n",
+        row[0], row[1], row[2], row[3], row[4], row[5]);
+    
+    fclose(output);
 
 }
 
@@ -44,30 +77,20 @@ void write_to_file()
  * ---------------------------
  *  Displays table of employee data to stdout
  *  @param num_entries the number of entries to display to stdout
- **/ 
-void display_output(int num_entries)
-{
-    // cant display more that LOT_SIZE
-    if (num_entries > LOT_SIZE)
-    {
-        num_entries = LOT_SIZE;
-    }
+ **/
+void display_row(int clock_number, float * row)
 
-    //print header
+{
+
+    // print header
     printf("\n---------------------------------------------------------------\n");
     printf("Clock#\tWage\tHours\tOT Hours\tOT Pay\t\tGross");
     printf("\n---------------------------------------------------------------\n");
-    
-    for (size_t i = 0; i < num_entries; i++)
+
+    for (size_t i = 0; i < LOT_SIZE; i++)
     {
 
         printf("%06d\t%2.2f\t%2.2f\t%2.2f\t\t+%2.2f\t\t%2.2f\n",
-               clock_number[i], wageRate[i], hours[i], overtime_hours[i], overtime_pay[i], gross[i]);
-    } //end for
-
-}
-
-int get_utc_time()
-{
-    return 0;
+               clock_number, row[0], row[1], row[2], row[3], row[4], row[5]);
+    } // end for
 }
