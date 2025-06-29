@@ -19,6 +19,7 @@
 #define LOT_SIZE 5          // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5    // Standatd time and a half pay
 
+
 /**
  * Function: is_overtime()
  * ---------------------------
@@ -29,37 +30,90 @@
 bool is_overtime(int hours_worked);
 
 
-/**
- * Function: caculate_pay()
- * ---------------------------
- * @param hours the numer of hours the employee worked
- * @param wage_rate the hourly wage of the employee
- * 
- * @returns the total gorss pay the emplyee earns with overtime
- * 
- **/
-float caculate_pay(float hours, float wage_rate);
 
 
 /**
- * Function: log_row()
- * ---------------------------
- *  Wites current row into desired output file 
- *  TODO: add row array
- *  @param clock_number employee clock number
- *  @param row pointer to the row of data that containes employee data
- **/
-void log_row(char *filename, int clock_number, float *row);
+ * Function: caculate_pay
+ *--------------------------
+ * function that calculates the gross pay based on hours worked and wage rate.
+ * It accounts for overtime hours, applying an overtime rate for hours
+ * exceeding STD_HOURS.
+ *
+ * @param hours The total number of hours worked by the employee (float).
+ * @param wage_rate The employee's hourly wage rate (float).
+ *
+ * @return float The calculated gross pay.
+ */
+float caculate_gross(float hours, float wage_rate);
+
+
+/**
+ * Function: caculate_ot_pay
+ * --------------------
+ * 
+ * 
+ */
+float caculate_ot_pay(float hours, float wage_rate);
+
+
+
+/**
+ * Function: caculate_avg 
+ * ------------------------
+ * Caculates the avrage value given an array of floats. 
+ * 
+ * @param arr the array of floats to avrage 
+ * 
+ * @return the avrage of the array (float)
+ */
+float caculate_avg(float *arr);
+
+/**
+ * Function: print_emp
+ * Prints employee payroll information.
+ *
+ * @param clock_number The employee's unique clock number (integer).
+ * @param wage_rate The employee's hourly wage rate (float).
+ * @param hours The number of regular hours worked by the employee (float).
+ * @param overtime_hours The number of overtime hours worked by the employee (float).
+ * @param overtime_pay The amount of pay earned from overtime hours (float).
+ * @param gross The employee's total gross pay (float).
+ *
+ * @return void
+ */
+void print_emp(int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross);
+
+
+/**
+ * Function: log_emp
+ * ------------------------
+ * Logs employee payroll information to a specified file.
+ *
+ * @param file_ptr A pointer to the FILE object where the data will be written.
+ * This file should be opened in write mode ("w") or append mode ("a").
+ * @param clock_number The employee's unique clock number (integer).
+ * @param wage_rate The employee's hourly wage rate (float).
+ * @param hours The number of regular hours worked by the employee (float).
+ * @param overtime_hours The number of overtime hours worked by the employee (float).
+ * @param overtime_pay The amount of pay earned from overtime hours (float).
+ * @param gross The employee's total gross pay (float).
+ *
+ * @return void
+ */
+void log_emp(char *filename, int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross)
+
 
 
 /**
  * Function: display_row()
  * ---------------------------
- *  Wites the current employees data stdout 
+ *  displays a row of data given array as an input 
  *  @param clock_number employee clock number
  *  @param row pointer to the row of data that containes the employee data
+ * 
+ *  @return void
  **/
-void display_row(int clock_number, float *row);
+void display_row(float *row);
 
 
 
