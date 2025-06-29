@@ -13,9 +13,9 @@ set(SOURCES
 # gcc compile options
 add_compile_options(-Wall -Wextra -save-temps)
 
-add_executable(${PROJECT_NAME} SOURCES)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(hello_headers
+target_include_directories(week-6
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
 )
