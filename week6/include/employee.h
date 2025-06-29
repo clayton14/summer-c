@@ -7,7 +7,7 @@
  *
  * DATE:        <2025-06-25>
  *
- * DESCRIPTION:  Header file for emplyee strcture
+ * DESCRIPTION:  Header file for employee strcture
  * 
  ****************************************/
 
