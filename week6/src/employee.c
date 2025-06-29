@@ -20,7 +20,7 @@
 
 #include "employee.h"
 
-bool is_overtime(int hours_worked)
+bool is_overtime(float hours_worked)
 {
     if (STD_HOURS < hours_worked)
     {
@@ -32,7 +32,7 @@ bool is_overtime(int hours_worked)
     }
 }
 
-float caculate_gross(float hours, float wage_rate)
+float calculate_gross(float hours, float wage_rate)
 {
     float gross;
     if (is_overtime(hours))
@@ -49,22 +49,22 @@ float caculate_gross(float hours, float wage_rate)
     return gross;
 }
 
-float caculate_ot_pay(float hours, float wage_rate)
-{
-    return ((wage_rate * STD_OVERTIME) * hours - STD_HOURS);
-}
 
-float caculate_avg(float *arr)
+
+float caculate_avg(float *arr, int len)
 {
-    int len = sizeof(arr) / sizeof(arr[0]);
-    float avg;
+    float total = 0;
+    if (len <= 0)
+    {
+        return 0.0f;
+    }
 
     for (size_t i = 0; i < len; i++)
     {
-        avg += arr[i];
+        total += arr[i];
     }
 
-    return avg / len;
+    return total / len;
 }
 
 void log_emp(char *filename, int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross)
@@ -73,7 +73,6 @@ void log_emp(char *filename, int clock_number, float wage_rate, float hours, flo
     if ((output = fopen(filename, "a")) == (FILE *)NULL)
     {
         fprintf(stderr, "[ERROR] Unable to open file employee.log\n");
-        return -1;
     }
     fprintf(output, "%06d\t%2.2f\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n",
             clock_number, wage_rate, hours, overtime_hours, overtime_pay, gross);
@@ -81,11 +80,7 @@ void log_emp(char *filename, int clock_number, float wage_rate, float hours, flo
     fclose(output);
 }
 
-void print_emp(int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross)
-{
-    printf("%06d\t%2.2f\t%2.2f\t%2.2f\t\t+%2.2f\t\t%2.2f\n",
-           clock_number, wage_rate, hours, overtime_hours, overtime_pay, gross);
-}
+
 
 void display_row(float *row)
 {
