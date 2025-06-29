@@ -50,8 +50,12 @@ float caculate_gross(float hours, float wage_rate);
 /**
  * Function: caculate_ot_pay
  * --------------------
+ * function that caulates only the overtim pay
  * 
+ * @param hours The total number of hours worked by the employee (float).
+ * @param wage_rate The employee's hourly wage rate (float).
  * 
+ * @return float The calculated overtime pay.
  */
 float caculate_ot_pay(float hours, float wage_rate);
 
