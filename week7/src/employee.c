@@ -20,9 +20,21 @@
 
 #include "employee.h"
 
-bool is_overtime(float hours_worked)
+// bool is_overtime(float hours_worked)
+// {
+//     if (STD_HOURS < hours_worked)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
+
+bool is_overtime(employee *emp)
 {
-    if (STD_HOURS < hours_worked)
+    if (emp->hours > STD_HOURS)
     {
         return true;
     }
@@ -30,6 +42,7 @@ bool is_overtime(float hours_worked)
     {
         return false;
     }
+
 }
 
 float calculate_gross(float hours, float wage_rate)

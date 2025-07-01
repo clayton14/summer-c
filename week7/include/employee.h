@@ -21,6 +21,18 @@
 #define LOT_SIZE 5       // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5 // Standatd time and a half pay
 
+// make emplyee structure and add alias
+typedef struct employee
+{
+    int clock_number;
+    float wage_rate;
+    float hours;
+    float overtime_hours;
+    float overtime_pay;
+    float gross_pay;
+}employee;
+
+
 /**
  * Function: is_overtime()
  * ---------------------------
@@ -28,7 +40,7 @@
  *  STD_HOURS
  *  @return true if the number of hours is is over STD_HOURS
  **/
-bool is_overtime(float hours_worked);
+bool is_overtime(employee *emp);
 
 /**
  * Function: caculate_pay
