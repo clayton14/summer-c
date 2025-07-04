@@ -42,31 +42,52 @@ bool is_overtime(employee *emp)
     {
         return false;
     }
-
 }
 
-float calculate_gross(float hours, float wage_rate)
+void get_hours(employee *emp)
 {
-    float gross;
-    if (is_overtime(hours))
+    float hr = 0;
+    if (emp != NULL)
     {
-        float overtime_hours = hours - STD_HOURS;
-        float overtime_pay = ((wage_rate * STD_OVERTIME) * overtime_hours);
-        gross = (wage_rate * (hours - overtime_hours)) + overtime_pay;
+        printf("\n [ID: %06d] Enter hours worked: ", emp->clock_number);
+        scanf("%f", &hr);
+        if (hr < 0)
+        {
+            printf("[ERROR] value cannot be negative entry terminated\n");
+            hr = 0.0;
+        }
+        emp->hours = hr;
     }
-    else
+}
+
+float calculate_gross(employee *emp, float hours, float wage_rate)
+{
+    float gross = 0;
+    if (emp != NULL)
     {
-        gross = wage_rate * hours;
+        if (is_overtime(emp))
+        {
+            float overtime_hours = hours - STD_HOURS;
+            float overtime_pay = ((wage_rate * STD_OVERTIME) * overtime_hours);
+            gross = (wage_rate * (hours - overtime_hours)) + overtime_pay;
+        }
+        else
+        {
+            gross = wage_rate * hours;
+        }
+
+        emp->gross_pay = gross;
     }
 
     return gross;
 }
 
-
-
-float caculate_avg(float *arr, int len)
+void caculate_avg(employee *arr_emp, int len)
 {
-    float total = 0;
+    //Dynamically allocate array 
+    float *avg = (float*) calloc(len, sizeof(float));
+
+
     if (len <= 0)
     {
         return 0.0f;
@@ -74,13 +95,27 @@ float caculate_avg(float *arr, int len)
 
     for (size_t i = 0; i < len; i++)
     {
-        total += arr[i];
+        avg[0] += arr_emp[i].wage_rate;
+        avg[1] += arr_emp[i].hours;
+        avg[2] += arr_emp[i].overtime_hours;
+        avg[3] += arr_emp[i].overtime_pay;
+        avg[4] += arr_emp[i].gross_pay;
     }
 
-    return total / len;
+    printf("\n---------------------------------------------------------------\n");
+
+        printf("Avg:\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\n", 
+            avg[0] / len, avg[1] / len, avg[2] / len, avg[3] / len, avg[4] / len
+        );
 }
 
-void log_emp(char *filename, int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross)
+void print_emp(employee *emp)
+{
+    printf("%06d\t%2.2f\t%2.2f\t%2.2f\t\t+%2.2f\t\t%2.2f\n",
+           emp->clock_number, emp->wage_rate, emp->hours, emp->overtime_hours, emp->overtime_pay, emp->gross_pay);
+}
+
+void log_employee(char *filename, employee *emp)
 {
     FILE *output;
     if ((output = fopen(filename, "a")) == (FILE *)NULL)
@@ -88,18 +123,9 @@ void log_emp(char *filename, int clock_number, float wage_rate, float hours, flo
         fprintf(stderr, "[ERROR] Unable to open file employee.log\n");
     }
     fprintf(output, "%06d\t%2.2f\t%2.2f\t%2.2f\t+%2.2f\t\t%2.2f\n",
-            clock_number, wage_rate, hours, overtime_hours, overtime_pay, gross);
+            emp->clock_number, emp->wage_rate, emp->hours, emp->overtime_hours, emp->overtime_pay, emp->gross_pay);
 
     fclose(output);
 }
 
 
-
-void display_row(float *row)
-{
-    for (size_t i = 0; i < LOT_SIZE; i++)
-    {
-        printf("%2.2f\t%2.2f\t%2.2f\t\t+%2.2f\t\t%2.2f\n",
-               row[0], row[1], row[2], row[3], row[4], row[5]);
-    } // end for
-}

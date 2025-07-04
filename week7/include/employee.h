@@ -21,7 +21,7 @@
 #define LOT_SIZE 5       // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5 // Standatd time and a half pay
 
-// make emplyee structure and add alias
+// make emplyee structure and add alia
 typedef struct employee
 {
     int clock_number;
@@ -42,62 +42,59 @@ typedef struct employee
  **/
 bool is_overtime(employee *emp);
 
+
+
+/**
+ * Function: get_hours()
+ * ------------------------
+ * fuction that asks the user to input the number of hours worked for
+ * a given employee
+ */
+void get_hours(employee *emp);
+
+
 /**
  * Function: caculate_pay
  *--------------------------
- * function that calculates the gross pay based on hours worked and wage rate.
+ * function that calculates the gross pay and updates struct based on hours worked and wage rate.
  * It accounts for overtime hours, applying an overtime rate for hours
  * exceeding STD_HOURS.
  *
+ * @param emp Struct pointer to the employe to update
  * @param hours The total number of hours worked by the employee (float).
  * @param wage_rate The employee's hourly wage rate (float).
  *
  * @return float The calculated gross pay.
  */
-float calculate_gross(float hours, float wage_rate);
-
+// float calculate_gross(float hours, float wage_rate);
+float calculate_gross(employee *emp, float hours, float wage_rate);
 
 /**
  * Function: caculate_avg
  * ------------------------
- * Caculates the avrage value given an array of floats.
+ * Caculates the avrage value given an pointer to employee struct.
  *
- * @param arr the array of floats to avrage
+ * @param arr_emp the array of employee structs to avrage
  * @param len the length of the array
  * 
  * @return the avrage of the array (float)
  */
-float caculate_avg(float *arr, int len);
+void caculate_avg(employee *arr_emp, int len);
 
 
 
 /**
- * Function: log_emp
+ * Function: log_employee()
  * ------------------------
  * Logs employee payroll information to a specified file.
  *
  * @param file_ptr A pointer to the FILE object where the data will be written.
  * This file should be opened in write mode ("w") or append mode ("a").
- * @param clock_number The employee's unique clock number (integer).
- * @param wage_rate The employee's hourly wage rate (float).
- * @param hours The number of regular hours worked by the employee (float).
- * @param overtime_hours The number of overtime hours worked by the employee (float).
- * @param overtime_pay The amount of pay earned from overtime hours (float).
- * @param gross The employee's total gross pay (float).
- *
+ * @param emp a pointer to the employee struct to be logged
+ * 
  * @return void
  */
-void log_emp(char *filename, int clock_number, float wage_rate, float hours, float overtime_hours, float overtime_pay, float gross);
+void log_employee(char *filename, employee *emp);
 
-/**
- * Function: display_row()
- * ---------------------------
- *  displays a row of data given array as an input
- *  @param clock_number employee clock number
- *  @param row pointer to the row of data that containes the employee data
- *
- *  @return void
- **/
-void display_row(float *row);
 
 #endif // EMPLOYEE_H
