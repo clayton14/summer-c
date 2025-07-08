@@ -1,11 +1,11 @@
 /***************************************
- * HOMEWORK:    Assignment 5
+ * HOMEWORK:    Assignment 7
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        <2025-06-24>
+ * DATE:        2025-07-08
  *
  * DESCRIPTION:  Implimatation for employee
  *

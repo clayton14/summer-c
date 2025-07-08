@@ -1,11 +1,11 @@
 /***************************************
- * HOMEWORK:    Assignment 5
+ * HOMEWORK:    Assignment 7
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        <2025-06-25>
+ * DATE:        2025-07-08
  *
  * DESCRIPTION:  Header file for employee strcture
  *
@@ -21,7 +21,12 @@
 #define LOT_SIZE 5       // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5 // Standatd time and a half pay
 
-// make emplyee structure and add alia
+#define NAME_SIZE 20
+#define FIRST_NAME_SIZE 10
+#define LAST_NAME_SIZE 10
+
+
+
 typedef struct employee
 {
     int clock_number;
