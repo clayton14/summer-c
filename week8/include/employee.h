@@ -17,6 +17,8 @@
 #include <stdbool.h>
 #include <time.h>
 
+#include "taxes.h"
+
 #define STD_HOURS 40.0   // Standard weekely hours before overtime.
 #define LOT_SIZE 5       // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5 // Standatd time and a half pay
@@ -25,15 +27,23 @@
 #define FIRST_NAME_SIZE 10
 #define LAST_NAME_SIZE 10
 
-
+typedef struct name
+{
+   const char first_name[FIRST_NAME_SIZE];
+   const char last_name[LAST_NAME_SIZE]; 
+}name;
 
 typedef struct employee
 {
+    name emp_name;
+    char state [3];
     int clock_number;
     float wage_rate;
     float hours;
     float overtime_hours;
     float overtime_pay;
+    float state_tax;
+    float fed_tax;
     float gross_pay;
 }employee;
 
