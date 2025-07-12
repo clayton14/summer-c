@@ -43,7 +43,7 @@ typedef struct employee
     float hours;
     float overtime_hours;
     float overtime_pay;
-    float state_tax;
+    char *state_tax;
     float fed_tax;
     float gross_pay;
 }employee;

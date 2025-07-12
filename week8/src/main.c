@@ -21,12 +21,12 @@
 // https://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Designated-Inits.html
 employee emp[LOT_SIZE] = {
     {{.first_name = "Connie", .last_name = "Cobol"}, 
-    .tax_state = "MA", .clock_number = 98401, .wage_rate = 10.60
+    .state_tax = "MA", .clock_number = 98401, .wage_rate = 10.60
 },
-    {{.first_name = "Mary ", .last_name = "Apl"}, .tax_state = "NH", .clock_number = 526488, .wage_rate = 9.75},
-    {{.first_name = "Frank", .last_name = "Fortran"}, .tax_state = "VT", .clock_number = 765349, .wage_rate = 10.50},
-    {{.first_name = "Jeff", .last_name = "Ada"}, .tax_state = "NY", .clock_number = 034645, .wage_rate = 12.25},
-    {{.first_name = "Anton", .last_name = "Pascal"}, .tax_state = "NH", .clock_number = 127615, .wage_rate = 8.35},
+    {{.first_name = "Mary ", .last_name = "Apl"}, .state_tax = "NH", .clock_number = 526488, .wage_rate = 9.75},
+    {{.first_name = "Frank", .last_name = "Fortran"}, .state_tax = "VT", .clock_number = 765349, .wage_rate = 10.50},
+    {{.first_name = "Jeff", .last_name = "Ada"}, .state_tax = "NY", .clock_number = 034645, .wage_rate = 12.25},
+    {{.first_name = "Anton", .last_name = "Pascal"}, .state_tax = "NH", .clock_number = 127615, .wage_rate = 8.35},
 
 };
 
