@@ -7,6 +7,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 # list of c files to compile
 set(SOURCES
     src/employee.c
+    src/stats.c
     src/main.c
 )
 
