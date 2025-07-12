@@ -44,10 +44,11 @@ float compare(const void* a, const void* b);
  * It assumes a fixed-size array
  *
  * @param data An array of floats for which to calculate the mean.
- *
+ * @param len length of the array
+ * 
  * @return float The arithmetic mean of the elements in the data array.
  */
-float mean(float data[]);
+float mean(float data[], int len);
 
 /**
  * Function: median
