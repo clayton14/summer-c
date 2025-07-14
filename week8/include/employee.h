@@ -24,7 +24,7 @@
 #define LOT_SIZE 5       // Default number of employee to enter into the system.
 #define STD_OVERTIME 1.5 // Standatd time and a half pay
 
-#define NAME_SIZE 20
+#define NAME_SIZE 25
 #define FIRST_NAME_SIZE 10
 #define LAST_NAME_SIZE 10
 
@@ -43,9 +43,10 @@ typedef struct employee
     float hours;
     float overtime_hours;
     float overtime_pay;
-    char *state_tax;
+    float state_tax;
     float fed_tax;
     float gross_pay;
+    float net_pay;
 }employee;
 
 
@@ -97,6 +98,23 @@ float calculate_gross(employee *emp, float hours, float wage_rate);
  */
 void caculate_avg(employee *arr_emp, int len);
 
+
+void snprint_stats(employee *emp, int buf_size);
+
+
+void print_emp(employee *emp);
+
+
+void get_full_name(char *buff, employee *emp);
+
+
+void snprint_emp(employee *emp, int buf_size, bool print_header);
+
+
+float get_state_tax(employee *emp);
+
+
+float get_fed_tax(employee *emp);
 
 
 /**
