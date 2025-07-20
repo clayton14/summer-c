@@ -1,11 +1,11 @@
 /***************************************
- * HOMEWORK:    Assignment 7
+ * HOMEWORK:    Assignment 8
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        2025-07-08
+ * DATE:        2025-07-20
  *
  * DESCRIPTION:  Implimatation for statistic functions.
  ****************************************/
