@@ -72,33 +72,98 @@ float calculate_gross(employee *emp, float hours, float wage_rate)
   return gross;
 }
 
-void caculate_stats(employee *arr_emp, int len)
+
+
+
+void calculate_stats(employee *emp, int len)
 {
   // Dynamically allocate array
-  float *avg = (float *)calloc(len, sizeof(float));
 
-  if (len <= 0)
+  // get min and max 
+
+  // get mean and median
+
+ if (len <= 0)
   {
     return 0.0f;
   }
 
+  float *wage_rates = (float *)calloc(len + 1, sizeof(float));
+  float *hours = (float *)calloc(len + 1, sizeof(float));
+  float *overtime_hours = (float *)calloc(len + 1, sizeof(float));
+  float *overtime_pays = (float *)calloc(len + 1, sizeof(float));
+  float *state_taxes = (float *)calloc(len + 1, sizeof(float));
+  float *fed_taxes = (float *)calloc(len + 1, sizeof(float));
+  float *gross_pays = (float *)calloc(len + 1, sizeof(float));
+  float *net_pays = (float *)calloc(len + 1, sizeof(float));
+
+  // coppy data
+
   for (size_t i = 0; i < len; i++)
   {
-    avg[0] += arr_emp[i].wage_rate;
-    avg[1] += arr_emp[i].hours;
-    avg[2] += arr_emp[i].overtime_hours;
-    avg[3] += arr_emp[i].overtime_pay;
-    avg[4] += arr_emp[i].gross_pay;
-    avg[5] += arr_emp[i].state_tax;
-    avg[6] += arr_emp[i].fed_tax;
-    avg[7] += arr_emp[i].net_pay;
+    wage_rates[i] = emp[i].wage_rate;
+    hours[i] = emp[i].hours;
+    overtime_hours[i] = emp[i].overtime_hours;
+    overtime_pays[i] = emp[i].overtime_pay;
+    state_taxes[i] = emp[i].state_tax;
+    fed_taxes[i] = emp[i].fed_tax;
+    gross_pays[i] = emp[i].gross_pay;
+    net_pays[i] = emp[i].net_pay;
+
   }
 
-  printf(
-      "\n---------------------------------------------------------------\n");
+/*
+for i = 0 to num oeioke
+add array[i] to last element of array, calloc one extra spoace
+fpor ever array
 
-  printf("Avg:\t\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\t%2.2f\n", avg[0] / len,
-         avg[1] / len, avg[2] / len, avg[3] / len, avg[4] / len, avg[5] / len);
+
+*/
+
+  
+//calculating totals and putting them at the end of the arrays
+for (int i= 0; i<len; i++)
+{
+  wage_rates[len] += wage_rates[i];
+  hours[len] += hours[i];
+  overtime_hours[len] += overtime_hours[i];
+  overtime_pays[len] += overtime_pays[i];
+  gross_pays[len] += gross_pays[i];
+  state_taxes[len] += state_taxes[i];
+  fed_taxes[len] += fed_taxes[i];
+  net_pays[len] += net_pays[i];
+}
+
+  printf(
+      "\n------------------------------------------------------------------------------------------------------------------------\n");
+
+  printf("Totals: \t\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\t\t%2.2f\n", wage_rates[len], hours[len], overtime_hours[len],
+  overtime_pays[len], gross_pays[len], state_taxes[len], fed_taxes[len], net_pays[len]);
+    
+  printf("Averages: \t\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\t\t%2.2f\n", wage_rates[len]/len, hours[len]/len, 
+  overtime_hours[len]/len, overtime_pays[len]/len, gross_pays[len]/len, state_taxes[len]/len, fed_taxes[len]/len, net_pays[len]/len);
+
+  printf("Minimum: \t\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\t\t%2.2f\n", get_min(wage_rates, len), get_min(hours, len),
+  get_min(overtime_hours, len), get_min(overtime_pays, len), get_min(gross_pays, len), get_min(state_taxes, len), 
+  get_min(fed_taxes, len), get_min(net_pays, len));
+
+  printf("Maximum: \t\t%2.2f\t%2.2f\t%2.2f\t\t%2.2f\t%2.2f\t\t%2.2f\t\t%2.2f\t\t%2.2f\n", get_max(wage_rates, len), get_max(hours, len),
+  get_max(overtime_hours, len), get_max(overtime_pays, len), get_max(gross_pays, len), get_max(state_taxes, len), 
+  get_max(fed_taxes, len), get_max(net_pays, len));
+
+
+  free(wage_rates);
+  free(hours);
+  free(overtime_hours);
+  free(overtime_pays);
+  free(state_taxes);
+  free(fed_taxes);
+  free(gross_pays);
+  free(net_pays);
+
+
+  
+
 }
 
 void print_emp(employee *emp)

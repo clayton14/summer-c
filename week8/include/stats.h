@@ -17,6 +17,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 // Refranced functions from https://www.geeksforgeeks.org/dsa/mean-and-median-of-an-unsorted-array/
 
@@ -76,9 +77,8 @@ float median(float *arr, int len, bool is_sorted);
  */
 float std_dev(float data[]);
 
+float get_min(float data[], int len);
 
-
-
-
+float get_max(float data[], int len);
 
 #endif //STATS_H

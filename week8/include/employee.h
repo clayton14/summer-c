@@ -96,7 +96,7 @@ float calculate_gross(employee *emp, float hours, float wage_rate);
  * 
  * @return the avrage of the array (float)
  */
-void caculate_stats(employee *arr_emp, int len);
+void calculate_stats(employee *arr_emp, int len);
 
 
 void snprint_stats(employee *emp, int buf_size);
