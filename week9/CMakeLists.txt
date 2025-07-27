@@ -16,7 +16,7 @@ add_compile_options(-Wall -Wextra -save-temps)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(week-8
+target_include_directories(week-9
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
 )
