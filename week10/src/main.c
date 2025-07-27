@@ -1,11 +1,11 @@
 /***************************************
- * HOMEWORK:    Assignment 8
+ * HOMEWORK:    Assignment 9
  *
  * NAME:        Clayton Easley
  *
  * CLASS:       C Programming, Summer 2025
  *
- * DATE:        2025-07-20
+ * DATE:        2025-07-26
  *
  * DESCRIPTION:  Program which determines employee gross pay and outputs to the
  *screen and writes to file. Allows for multiple entries and caulates overtime

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(week-9)
+project(week-10)
 
 set(CMAKE_C_STANDARD 23) 
 set(CMAKE_C_STANDARD_REQUIRED ON) 
@@ -16,7 +16,7 @@ add_compile_options(-Wall -Wextra -save-temps)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(week-9
+target_include_directories(week-10
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
 )
